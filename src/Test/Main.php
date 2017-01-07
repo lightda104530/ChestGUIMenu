@@ -31,7 +31,7 @@ class Main extends PluginBase implements Listener{
 * CrateMenu by TB , InspectorGadget Helped!
 *
 */
-  public function sendChestInventory(Player $player){
+  public function sendChestInventory(Player $player, InventoryTransactionEvent $e){
     $block = Block::get(54);
     $player->getLevel()->setBlock(new Vector3($player->x, $player->y - 2, $player->z), $block, true, true);
     $nbt = new CompoundTag("", [
@@ -43,10 +43,19 @@ class Main extends PluginBase implements Listener{
     ]);
     $nbt->Items->setTagType(NBT::TAG_Compound);
     $tile = Tile::createTile("Chest", $player->getLevel()->getChunk($player->getX() >> 4, $player->getZ() >> 4), $nbt);
+    /* Items */
     $item = Item::get(310, 0, 1);
-    $tile->getInventory()->setItem(1, $item);
-	$tile->getInventory()->setItem(2, $item);
+    $item2 = Item::get(276, 0, 1);
+    $item2->setCustomName("Lmao");
+    $tile->getInventory()->getSlotIndex(1)->setItem($item);
+    $tile->getInventory()->addItem(2, $item);
     $player->addWindow($tile->getInventory());
+   
+        foreach($e->getTransaction()->getTransactions() as $t) {
+            if($t->getInventory() instanceof ChestInventory) {
+                $e->setCancelled(true);
+            ]
+        ]
   }
 
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
