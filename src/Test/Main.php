@@ -44,7 +44,8 @@ class Main extends PluginBase implements Listener{
     $nbt->Items->setTagType(NBT::TAG_Compound);
     $tile = Tile::createTile("Chest", $player->getLevel()->getChunk($player->getX() >> 4, $player->getZ() >> 4), $nbt);
     $item = Item::get(310, 0, 1);
-    $tile->getInventory()->addItem($item);
+    $tile->getInventory()->setItem(1, $item);
+	$tile->getInventory()->setItem(2, $item);
     $player->addWindow($tile->getInventory());
   }
 
