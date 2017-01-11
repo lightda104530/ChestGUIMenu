@@ -1,2 +1,2 @@
-# SuperMenu
-A plugin with GUI
+# ChestGUIMenu
+A menu plugin with ChestGUI.
