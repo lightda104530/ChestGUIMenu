@@ -54,8 +54,8 @@ class Main extends PluginBase implements Listener{
     foreach($e->getTransaction()->getTransactions() as $t) {
     	if($t->getInventory() instanceof ChestInventory) {
         	$e->setCancelled(true);
-            ]
-        ]
+		}
+    	}
   }
 
   public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
