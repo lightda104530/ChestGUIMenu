@@ -60,8 +60,8 @@ class Main extends PluginBase implements Listener{
     if($sender instanceof Player){
       switch(strtolower($cmd->getName())){
 		  
-		case "CGM":
-          $sender->sendMessage("§l§cTheVortex §7»»§f§r §7ChestGUIMenu Opened!");
+		case "menu":
+          $sender->sendMessage("Open the GUIMenu!!");
           $this->sendChestInventory($sender);
 		  return true;
         break;
